@@ -1,25 +1,135 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uoN-4I-tnG">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--TimerViewController-->
+        <scene sceneID="ayT-9F-TFZ">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="TimerViewController" id="uoN-4I-tnG" customClass="TimerViewController" customModule="StopWatch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="9tc-gR-gN8"/>
+                        <viewControllerLayoutGuide type="bottom" id="dYf-wq-CRS"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="view" contentMode="scaleToFill" id="cSi-Im-NU7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bDK-t3-GFt">
+                                <rect key="frame" x="-4" y="28" width="383" height="44"/>
+                                <items>
+                                    <navigationItem title="StopWatch" id="xda-II-CRx"/>
+                                </items>
+                            </navigationBar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="muh-k9-0mD">
+                                <rect key="frame" x="-4" y="623" width="383" height="44"/>
+                                <items/>
+                            </toolbar>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bDl-nW-bSA">
+                                <rect key="frame" x="20" y="318" width="111" height="95"/>
+                                <accessibility key="accessibilityConfiguration" label="Reset">
+                                    <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="bDl-nW-bSA" secondAttribute="height" multiplier="111:95" id="Pum-h5-PIb"/>
+                                    <constraint firstAttribute="width" secondItem="bDl-nW-bSA" secondAttribute="height" multiplier="111:95" id="a3X-dp-3Dx"/>
+                                    <constraint firstAttribute="height" constant="95" id="kqD-h2-yRV"/>
+                                </constraints>
+                                <state key="normal" title="Reset" image="refresh"/>
+                                <connections>
+                                    <action selector="resetButtonPressed:" destination="uoN-4I-tnG" eventType="touchUpInside" id="a1v-xn-HRV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eSq-7i-XOY">
+                                <rect key="frame" x="245" y="318" width="110" height="91"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="eSq-7i-XOY" secondAttribute="height" multiplier="110:91" id="83g-dJ-kG2"/>
+                                    <constraint firstAttribute="height" constant="91" id="WVL-WW-1f4"/>
+                                    <constraint firstAttribute="width" secondItem="eSq-7i-XOY" secondAttribute="height" multiplier="110:91" id="YKN-QV-Ajc"/>
+                                </constraints>
+                                <state key="normal" title="Pause" image="pause"/>
+                                <connections>
+                                    <action selector="pauseButtonPressed:" destination="uoN-4I-tnG" eventType="touchUpInside" id="Qmg-KB-OLx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KOT-v7-598">
+                                <rect key="frame" x="130" y="308" width="115" height="111"/>
+                                <accessibility key="accessibilityConfiguration" label="play">
+                                    <accessibilityTraits key="traits" button="YES" image="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="111" id="XSk-9d-9Aw"/>
+                                    <constraint firstAttribute="width" constant="115" id="lNE-dk-SKD"/>
+                                </constraints>
+                                <state key="normal" title="Play" image="play"/>
+                                <connections>
+                                    <action selector="playButtonPressed:" destination="uoN-4I-tnG" eventType="touchUpInside" id="SI2-4u-go8"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l0D-fK-7Cv">
+                                <rect key="frame" x="20" y="188" width="343" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="sBF-ly-6w3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9p-GM-Dq2">
+                                <rect key="frame" x="16" y="233" width="351" height="73"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="61"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" image="YES"/>
+                        </accessibility>
+                        <constraints>
+                            <constraint firstItem="KOT-v7-598" firstAttribute="centerY" secondItem="eSq-7i-XOY" secondAttribute="centerY" id="2Wq-gW-X0c"/>
+                            <constraint firstItem="eSq-7i-XOY" firstAttribute="top" secondItem="g9p-GM-Dq2" secondAttribute="bottom" constant="12" id="3xY-rF-8RM"/>
+                            <constraint firstItem="l0D-fK-7Cv" firstAttribute="centerX" secondItem="g9p-GM-Dq2" secondAttribute="centerX" id="7ak-nX-jkS"/>
+                            <constraint firstItem="KOT-v7-598" firstAttribute="top" secondItem="g9p-GM-Dq2" secondAttribute="bottom" constant="2" id="IpQ-W0-aLV"/>
+                            <constraint firstItem="g9p-GM-Dq2" firstAttribute="leading" secondItem="cSi-Im-NU7" secondAttribute="leadingMargin" id="KRn-57-x4k"/>
+                            <constraint firstItem="eSq-7i-XOY" firstAttribute="top" secondItem="bDl-nW-bSA" secondAttribute="top" id="URT-e5-qg8"/>
+                            <constraint firstItem="KOT-v7-598" firstAttribute="centerX" secondItem="bDK-t3-GFt" secondAttribute="centerX" id="beD-l3-PN9"/>
+                            <constraint firstItem="bDl-nW-bSA" firstAttribute="leading" secondItem="cSi-Im-NU7" secondAttribute="leadingMargin" constant="4" id="cDS-oa-aQE"/>
+                            <constraint firstItem="KOT-v7-598" firstAttribute="centerX" secondItem="muh-k9-0mD" secondAttribute="centerX" id="d8b-EH-Jnk"/>
+                            <constraint firstItem="bDK-t3-GFt" firstAttribute="leading" secondItem="cSi-Im-NU7" secondAttribute="leadingMargin" constant="-20" id="fFd-KS-kEh"/>
+                            <constraint firstItem="l0D-fK-7Cv" firstAttribute="leading" secondItem="bDl-nW-bSA" secondAttribute="leading" id="gwf-cF-fvl"/>
+                            <constraint firstItem="bDK-t3-GFt" firstAttribute="leading" secondItem="muh-k9-0mD" secondAttribute="leading" id="hKH-Xt-vhF"/>
+                            <constraint firstItem="KOT-v7-598" firstAttribute="centerX" secondItem="cSi-Im-NU7" secondAttribute="centerX" id="iU2-pm-7aZ"/>
+                            <constraint firstItem="muh-k9-0mD" firstAttribute="bottom" secondItem="dYf-wq-CRS" secondAttribute="top" id="l9e-UP-cjd"/>
+                            <constraint firstItem="bDK-t3-GFt" firstAttribute="top" secondItem="9tc-gR-gN8" secondAttribute="bottom" constant="8" id="nbq-0O-4eS"/>
+                            <constraint firstItem="eSq-7i-XOY" firstAttribute="top" secondItem="cSi-Im-NU7" secondAttribute="top" constant="318" id="o5u-Y5-3W1"/>
+                            <constraint firstItem="eSq-7i-XOY" firstAttribute="leading" secondItem="KOT-v7-598" secondAttribute="trailing" id="ohx-ob-Uc4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="g9p-GM-Dq2" secondAttribute="trailing" constant="-8" id="snR-Cz-Vw9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eSq-7i-XOY" secondAttribute="trailing" constant="4" id="wPH-cq-VC7"/>
+                            <constraint firstItem="g9p-GM-Dq2" firstAttribute="top" secondItem="l0D-fK-7Cv" secondAttribute="bottom" constant="6" id="xy2-2d-w75"/>
+                        </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="smallTimerLabel" destination="l0D-fK-7Cv" id="NzD-SF-snA"/>
+                        <outlet property="timerLabel" destination="g9p-GM-Dq2" id="FT7-K7-y6t"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sOv-kR-Wd3" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="304.5" y="387.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="pause" width="102" height="102"/>
+        <image name="play" width="450" height="334"/>
+        <image name="refresh" width="128" height="128"/>
+    </resources>
 </document>
