@@ -8,10 +8,16 @@
 
 import UIKit
 
+extension NumberFormatter {
+    func string(from number : Int) -> String {
+        return NSNumber(integerLiteral: number).description
+    }
+}
+
 class TimerViewController: UIViewController {
     
-    var timer = NSTimer()
-    var numFormatter = NSNumberFormatter()
+    var timer = Timer()
+    var numFormatter = NumberFormatter()
     var time: Int = 0
     
     @IBOutlet weak var timerLabel: UILabel!
@@ -21,7 +27,7 @@ class TimerViewController: UIViewController {
     @IBAction func playButtonPressed(sender: AnyObject) {
         numFormatter.minimumIntegerDigits = 2
         
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(TimerViewController.TimeTick), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(TimeTick), userInfo: nil, repeats: true)
     }
     
     
@@ -39,15 +45,15 @@ class TimerViewController: UIViewController {
     
     
     
-    func TimeTick() {
+    @objc func TimeTick() {
         time += 1
-        let min: Int = getMinutes(time)
-        let sec: Int = getSeconds(time - (min * 600))
+        let min: Int = getMinutes(mSec: time)
+        let sec: Int = getSeconds(mSec: time - (min * 600))
         let mil: Int = time - (min * 600) - (sec * 10)
+
+        timerLabel.text = "\(numFormatter.string(from: min)):\(numFormatter.string(from: sec)):\(numFormatter.string(from:mil))"
         
-        timerLabel.text = "\(numFormatter.stringFromNumber(min)!):\(numFormatter.stringFromNumber(sec)!):\(numFormatter.stringFromNumber(mil)!)"
-        
-        smallTimerLabel.text = "\(numFormatter.stringFromNumber(min)!):\(numFormatter.stringFromNumber(sec)!):\(numFormatter.stringFromNumber(mil)!)"
+        smallTimerLabel.text = "\(numFormatter.string(from: min)):\(numFormatter.string(from: sec)):\(numFormatter.string(from:mil))"
         
     }
     
